@@ -96,12 +96,128 @@ namespace MauiStylesDemo.ViewModels
         }
         #endregion
 
+        private bool showBirthDateError;
+
+        public bool ShowBirthDateError
+        {
+            get => showBirthDateError;
+            set
+            {
+                showBirthDateError = value;
+                OnPropertyChanged("ShowBirthDateError");
+            }
+        }
+
+        private DateTime birthDate;
+
+        public DateTime BirthDate
+        {
+            get => birthDate;
+            set
+            {
+                birthDate = value;
+                ValidateBirthDate();
+                OnPropertyChanged("BirthDate");
+            }
+        }
+
+        private string birthDateError;
+
+        public string BirthDateError
+        {
+            get => birthDateError;
+            set
+            {
+                birthDateError = value;
+                OnPropertyChanged("BirthDateError");
+            }
+        }
+
+
+
+        private void ValidateBirthDate()
+        {
+            TimeSpan d = DateTime.Today.Subtract(this.birthDate);
+            if(d.TotalDays >= 4745)
+            {
+                this.ShowBirthDateError = false;
+            }
+            else
+            {
+                this.ShowBirthDateError = true;
+            }
+            
+        }
+
+
+
+
+
+
+
+        private string password;
+
+        public string Password
+        {
+            get => password;
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+
+        private string passwordError;
+
+        public string PasswordError
+        {
+            get => passwordError;
+            set
+            {
+                passwordError = value;
+                OnPropertyChanged("PasswordError");
+            }
+        }
+
+        private bool showPasswordError;
+
+        public bool ShowPasswordError
+        {
+            get => showPasswordError;
+            set
+            {
+                showPasswordError = value;
+                OnPropertyChanged("ShowPasswordError");
+            }
+        }
+
+        private string passwordConfirmation;
+
+        public string PasswordConfirmation
+        {
+            get => passwordConfirmation;
+            set
+            {
+                passwordConfirmation = value;
+                ValidatePasswordConfirmation();
+                OnPropertyChanged("PasswordConfirmation");
+            }
+        }
+        private void ValidatePasswordConfirmation()
+        {
+            this.ShowPasswordError = Password != PasswordConfirmation;
+        }
         public FormValidationViewModel()
         {
             this.NameError = "זהו שדה חובה";
             this.ShowNameError = false;
             this.AgeError = "הגיל חייב להיות גדול מ 13";
             this.ShowAgeError = false;
+            this.BirthDateError = "עליך להיות לפחות בן 13";
+            this.ShowBirthDateError = false;
+
+             this.PasswordError = "הסיסמאות לא תואמות";
+            this.ShowPasswordError = false;
             this.SaveDataCommand = new Command(() => SaveData());
         }
 

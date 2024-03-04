@@ -27,9 +27,21 @@
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="TextColor" Value="Blue" />
             </Style>
+
+            <Style 
+     TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Green" />
+            </Style>
+            <Style x:Key="button24Style"
+     TargetType="Button">
+                <Setter Property="FontSize" Value="24" />
+
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
+               
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

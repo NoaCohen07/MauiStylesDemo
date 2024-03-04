@@ -1,4 +1,5 @@
-﻿namespace MauiStylesDemo;
+﻿using MauiStylesDemo.Views;
+namespace MauiStylesDemo;
 
 public partial class App : Application
 {
@@ -6,6 +7,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new FormValidation();
 	}
 }
